@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://alpha-api.app.net
+HOST: http://127.0.0.1:3001
 
 # Real World API
 This API Blueprint demonstrates a real world example documenting a portion of
@@ -91,13 +91,16 @@ A Collection of posts.
     {
         "data": [
             {
-                "id": "1" // note this is a string
+                "id": "1", // note this is a string
+                ...
             },
             {
-                "id": "2"
+                "id": "2",
+                ...
             },
             {
-                "id": "3"
+                "id": "3",
+                ...
             },
         ],
         "meta": {
