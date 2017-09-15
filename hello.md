@@ -91,16 +91,13 @@ A Collection of posts.
     {
         "data": [
             {
-                "id": "1", // note this is a string
-                ...
+                "id": "1" // note this is a string
             },
             {
-                "id": "2",
-                ...
+                "id": "2"
             },
             {
-                "id": "3",
-                ...
+                "id": "3"
             },
         ],
         "meta": {
