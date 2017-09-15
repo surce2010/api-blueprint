@@ -25,7 +25,6 @@ their feed. Posts are closely tied to the follow graph...
         "data": {
             "id": "1", // note this is a string
             "user": {
-                ...
             },
             "created_at": "2012-07-16T17:25:47Z",
             "text": "@berg FIRST post on this new site #newsocialnetwork",
@@ -91,20 +90,17 @@ A Collection of posts.
     {
         "data": [
             {
-                "id": "1", // note this is a string
-                ...
+                "id": "1" // note this is a string
             },
             {
-                "id": "2",
-                ...
+                "id": "2"
             },
             {
-                "id": "3",
-                ...
+                "id": "3"
             },
         ],
         "meta": {
-            "code": 200,
+            "code": 200
         }
     }
     ```
