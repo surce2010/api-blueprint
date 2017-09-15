@@ -1,149 +1,166 @@
 FORMAT: 1A
-HOST: http://127.0.0.1:3001
 
-# Real World API
-This API Blueprint demonstrates a real world example documenting a portion of
-[App.net API](http://developers.app.net).
+# APP接口文档       
 
-NOTE: This document is a **work in progress**.
+# Group 门店管理
 
-# Group Posts
-This section groups App.net post resources.
-
-## Post [/stream/0/posts/{post_id}]
-A Post is the other central object utilized by the App.net Stream API. It has
-rich text and annotations which comprise all of the content a users sees in
-their feed. Posts are closely tied to the follow graph...
+## 商户-门店列表查询  [POST /store/app/search{?storeName,enable,pageNO,pageCount}]
 
 + Parameters
-    + post_id: `1` (string) - The id of the Post.
 
-+ Model (application/json)
+    + storeName (string,required) - 门店名字,字符串
+    + enable (numberl ,optional) - 状态,整型  0:启用,1:注销 -1默认查全部
+    + pageNO (numberl,required) - 页码, 整型 第一页默认 1 必填
+    + pageCount (numberl,required) - 每页显示条数, 整型  必填
+       
++ Response 201 (application/json)
 
-    ```js
-    {
-        "data": {
-            "id": "1",
-            "user": {
-            },
-            "created_at": "2012-07-16T17:25:47Z",
-            "text": "@berg FIRST post on this new site #newsocialnetwork",
-            "html": "<span itemprop=\"mention\" data-mention-name=\"berg\" data-mention-id=\"2\">@berg</span> FIRST post on <a href=\"https://join.app.net\" rel=\"nofollow\">this new site</a> <span itemprop=\"hashtag\" data-hashtag-name=\"newsocialnetwork\">#newsocialnetwork</span>.",
-            "source": {
-                "client_id": "udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4",
-                "name": "Clientastic for iOS",
-                "link": "http://app.net"
-            },
-            "machine_only": false,
-            "reply_to": null,
-            "thread_id": "1",
-            "num_replies": 3,
-            "num_reposts": 0,
-            "num_stars": 0,
-            "entities": {
-                "mentions": [{
-                    "name": "berg",
-                    "id": "2",
-                    "pos": 0,
-                    "len": 5
-                }],
-                "hashtags": [{
-                    "name": "newsocialnetwork",
-                    "pos": 34,
-                    "len": 17
-                }],
-                "links": [{
-                    "text": "this new site",
-                    "url": "https://join.app.net"
-                    "pos": 20,
-                    "len": 13
-                }]
-            },
-            "you_reposted": false,
-            "you_starred": false
-        },
-        "meta": {
-            "code": 200,
-        }
-    }
-    ```
+    + Body
 
-### Retrieve a Post [GET]
-Returns a specific Post.
-
-+ Response 200
-
-    [Post][]
-
-### Delete a Post [DELETE]
-Delete a Post. The current user must be the same user who created the Post. It
-returns the deleted Post on success.
-
-+ Response 204
-
-## Posts Collection [/stream/0/posts]
-A Collection of posts.
-
-+ Model (application/json)
-
-    ```js
-    {
-        "data": [
             {
-                "id": "1" // note this is a string
-            },
+                "success": true,
+                "err_code": "888888",
+                "err_msg": "错误说明",
+                "data": {
+                    "storeSearchDto": [
+                                       {
+                                           "id": 2, 
+                                           "storeName": "屠神", 
+                                           "mobilePhone": "10000002",
+                                           "enable": 0,
+                                           "storeNo": "001",
+                                           "storeLogo":"标志地址"
+                                       }
+                                       ],
+                    "page": {
+                        "pageNO": 1,
+                        "everyPageCount": 10,
+                        "totalCount": 1
+                    }
+                }
+            }
+            
+    + Schema
+
             {
-                "id": "2"
-            },
+               "data": {
+                    "storeSearchDto": [
+                                       {
+                                           "id": "员工id，字符串", 
+                                           "storeName": "门店名字，字符串", 
+                                           "mobilePhone": "手机号码，字符串",
+                                           "enable": "启用状态，整形，0：启用；1：禁用",
+                                           "storeNo": "门店编号，字符串",
+                                           "storeLogo":"门店图片，字符串"
+                                       }
+                                       ],
+                    "page": {
+                        "pageNO": 1,
+                        "everyPageCount": 10,
+                        "totalCount": 1
+                    }
+            }
+
+## 商户-获取门店名称列表接口  [GET /user/app/search-store-name]
+       
++ Response 200 (application/json)
+
+    + Body
+
             {
-                "id": "3"
-            },
-        ],
-        "meta": {
-            "code": 200
-        }
-    }
-    ```
-
-### Create a Post [POST]
-Create a new Post object. Mentions and hashtags will be parsed out of the post
-text, as will bare URLs...
-
-+ Request
-
-    [Post][]
-
-+ Response 201
-
-    [Post][]
-
-### Retrieve all Posts [GET]
-Retrieves all posts.
-
-+ Response 200
-
-    [Posts Collection][]
-
-## Stars [/stream/0/posts/{post_id}/star]
-A User’s stars are visible to others, but they are not automatically added to
-your followers’ streams.
+                "success": true,
+                "err_code": "888888",
+                "err_msg": "错误说明",
+                "data": {
+                    "storeNameDto": [
+                                     {
+                                         "storeId": 2,
+                                         "storeName": "屠神"
+                                     }
+                                     ]
+                }
+            }
+        
+      
+        
+# Group 员工管理   
+ 
+## 商户-门店列表查询  [POST /user/app/info{?id}]
 
 + Parameters
-    + post_id: `1` (string) - The id of the Post.
 
-### Star a Post [POST]
-Save a given Post to the current User’s stars. This is just a “save” action,
-not a sharing action.
+    + id (string,optional) - 员工ID
+       
++ Response 200 (application/json)
 
-*Note: A repost cannot be starred. Please star the parent Post.*
+    + Body
 
-+ Response 200
+            {
+                "success": true,
+                "err_code": "888888",
+                "err_msg": "错误说明",
+                "data":{
+                    "id": 39,
+                    "storeId":43,
+                    "realname": "屠神", 
+                    "mobilePhone": "13554477744",
+                    "storeName": "杭州店",
+                    "type":0,
+                    "sex": 1,
+                    "enable": 1,
+                    "username": "chenlong01",
+                    "portrait":"头像"
+                }
+            }
+            
+    + Schema
 
-    [Post][]
+            {
+                "data": {
+                        "id": "员工id,整型",
+                         "storeId": "门店ID，字符串",
+                        "storeName": "门店名字",
+                        "realname": "员工姓名，字符串",
+                        "mobilePhone": "手机号，字符串",
+                        "sex": "性别，0：男  1：女",
+                        "enable": "启用状态，0：启用；1：禁用",
+                        "username": "账号，字符串",
+                        "portrait": "头像链接，字符串"
+                        }
+            }
+    
+## 门店-修改员工密码  [POST /user/app/store-edit-password{?id,password}]
 
-### Unstar a Post [DELETE]
-Remove a Star from a Post.
++ Parameters
 
-+ Response 200
+    + id (string) - 员工ID
+    + password (string) - 账户密码
+       
++ Response 200 (application/json)
 
-    [Post][]
+    + Body
+
+            {
+                "success": true,
+                "err_code": "888888",
+                "err_msg": "错误说明"
+            }        
+            
+# Group 意见反馈   
+ 
+## 商户/店长/员工 -意见反馈  [POST /advice/app/customer-advice{?content,title}]
+
++ Parameters
+
+    + content (string,required) - 意见反馈内容
+    + title (string,optional) - 联系方式
+       
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "success": true,
+                "err_code": "888888",
+                "err_msg": "错误说明"
+            }
