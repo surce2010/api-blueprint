@@ -1,43 +1,67 @@
 FORMAT: 1A
 
-# Grouping Resources API
-This API example demonstrates how to group resources and form **groups of
-resources**. You can create as many or as few groups as you like. If you do not
-create any group all your resources will be part of an "unnamed" group.
+# Requests API
+Following the [Responses](05.%20Responses.md) example, this API will show you
+how to define multiple requests and what data these requests can bear. Let's
+demonstrate multiple requests on a trivial example of content negotiation.
 
 ## API Blueprint
-+ [Previous: Named Resource and Actions](03.%20Named%20Resource%20and%20Actions.md)
-+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/04.%20Grouping%20Resources.md)
-+ [Next: Responses](05.%20Responses.md)
++ [Previous: Responses](05.%20Responses.md)
++ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/06.%20Requests.md)
++ [Next: Parameters](07.%20Parameters.md)
 
 # Group Messages
 Group of all messages-related resources.
 
-This is the first group of resources in this document. It is **recognized** by
-the **keyword `group`** and its name is `Messages`.
-
-Any following resource definition is considered to be a part of this group
-until another group is defined. It is **customary** to increase header level of
-resources (and actions) nested under a resource.
-
 ## My Message [/message]
 
 ### Retrieve a Message [GET]
+In API Blueprint, _requests_ can hold exactly the same kind of information and
+can be described using exactly the same structure as _responses_, only with
+different signature – using the `Request` keyword. The string that follows
+after the `Request` keyword is a request identifier. Again, using explanatory
+and simple naming is the best way to go.
+
++ Request Plain Text Message
+
+    + Headers
+
+            Accept: text/plain
 
 + Response 200 (text/plain)
 
-        Hello World!
+    + Headers
+
+            X-My-Message-Header: 42
+
+    + Body
+
+            Hello World!
+
++ Request JSON Message
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-My-Message-Header: 42
+
+    + Body
+
+            { "message": "Hello World!" }
 
 ### Update a Message [PUT]
 
-+ Request (text/plain)
++ Request Update Plain Text Message (text/plain)
 
         All your base are belong to us.
 
++ Request Update JSON Message (application/json)
+
+        { "message": "All your base are belong to us." }
+
 + Response 204
-
-# Group Users
-Group of all user-related resources.
-
-This is the second group in this blueprint. For now, no resources were defined
-here and as such we will omit it from the next installment of this course.
