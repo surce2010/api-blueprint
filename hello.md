@@ -1,67 +1,153 @@
 FORMAT: 1A
+HOST: https://alpha-api.app.net
 
-# Requests API
-Following the [Responses](05.%20Responses.md) example, this API will show you
-how to define multiple requests and what data these requests can bear. Let's
-demonstrate multiple requests on a trivial example of content negotiation.
+# Real World API
+This API Blueprint demonstrates a real world example documenting a portion of
+[App.net API](http://developers.app.net).
 
-## API Blueprint
-+ [Previous: Responses](05.%20Responses.md)
-+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/06.%20Requests.md)
-+ [Next: Parameters](07.%20Parameters.md)
+NOTE: This document is a **work in progress**.
 
-# Group Messages
-Group of all messages-related resources.
+# Group Posts
+This section groups App.net post resources.
 
-## My Message [/message]
+## Post [/stream/0/posts/{post_id}]
+A Post is the other central object utilized by the App.net Stream API. It has
+rich text and annotations which comprise all of the content a users sees in
+their feed. Posts are closely tied to the follow graph...
 
-### Retrieve a Message [GET]
-In API Blueprint, _requests_ can hold exactly the same kind of information and
-can be described using exactly the same structure as _responses_, only with
-different signature – using the `Request` keyword. The string that follows
-after the `Request` keyword is a request identifier. Again, using explanatory
-and simple naming is the best way to go.
++ Parameters
+    + post_id: `1` (string) - The id of the Post.
 
-+ Request Plain Text Message
++ Model (application/json)
 
-    + Headers
+    ```js
+    {
+        "data": {
+            "id": "1", // note this is a string
+            "user": {
+                ...
+            },
+            "created_at": "2012-07-16T17:25:47Z",
+            "text": "@berg FIRST post on this new site #newsocialnetwork",
+            "html": "<span itemprop=\"mention\" data-mention-name=\"berg\" data-mention-id=\"2\">@berg</span> FIRST post on <a href=\"https://join.app.net\" rel=\"nofollow\">this new site</a> <span itemprop=\"hashtag\" data-hashtag-name=\"newsocialnetwork\">#newsocialnetwork</span>.",
+            "source": {
+                "client_id": "udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4",
+                "name": "Clientastic for iOS",
+                "link": "http://app.net"
+            },
+            "machine_only": false,
+            "reply_to": null,
+            "thread_id": "1",
+            "num_replies": 3,
+            "num_reposts": 0,
+            "num_stars": 0,
+            "entities": {
+                "mentions": [{
+                    "name": "berg",
+                    "id": "2",
+                    "pos": 0,
+                    "len": 5
+                }],
+                "hashtags": [{
+                    "name": "newsocialnetwork",
+                    "pos": 34,
+                    "len": 17
+                }],
+                "links": [{
+                    "text": "this new site",
+                    "url": "https://join.app.net"
+                    "pos": 20,
+                    "len": 13
+                }]
+            },
+            "you_reposted": false,
+            "you_starred": false
+        },
+        "meta": {
+            "code": 200,
+        }
+    }
+    ```
 
-            Accept: text/plain
+### Retrieve a Post [GET]
+Returns a specific Post.
 
-+ Response 200 (text/plain)
++ Response 200
 
-    + Headers
+    [Post][]
 
-            X-My-Message-Header: 42
-
-    + Body
-
-            Hello World!
-
-+ Request JSON Message
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    + Headers
-
-            X-My-Message-Header: 42
-
-    + Body
-
-            { "message": "Hello World!" }
-
-### Update a Message [PUT]
-
-+ Request Update Plain Text Message (text/plain)
-
-        All your base are belong to us.
-
-+ Request Update JSON Message (application/json)
-
-        { "message": "All your base are belong to us." }
+### Delete a Post [DELETE]
+Delete a Post. The current user must be the same user who created the Post. It
+returns the deleted Post on success.
 
 + Response 204
+
+## Posts Collection [/stream/0/posts]
+A Collection of posts.
+
++ Model (application/json)
+
+    ```js
+    {
+        "data": [
+            {
+                "id": "1", // note this is a string
+                ...
+            },
+            {
+                "id": "2",
+                ...
+            },
+            {
+                "id": "3",
+                ...
+            },
+        ],
+        "meta": {
+            "code": 200,
+        }
+    }
+    ```
+
+### Create a Post [POST]
+Create a new Post object. Mentions and hashtags will be parsed out of the post
+text, as will bare URLs...
+
++ Request
+
+    [Post][]
+
++ Response 201
+
+    [Post][]
+
+### Retrieve all Posts [GET]
+Retrieves all posts.
+
++ Response 200
+
+    [Posts Collection][]
+
+## Stars [/stream/0/posts/{post_id}/star]
+A User’s stars are visible to others, but they are not automatically added to
+your followers’ streams.
+
++ Parameters
+    + post_id: `1` (string) - The id of the Post.
+
+### Star a Post [POST]
+Save a given Post to the current User’s stars. This is just a “save” action,
+not a sharing action.
+
+*Note: A repost cannot be starred. Please star the parent Post.*
+
++ Response 200
+
+    [Post][]
+
+### Unstar a Post [DELETE]
+Remove a Star from a Post.
+
++ Response 200
+
+    [Post][]
