@@ -23,7 +23,7 @@
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
-+ Request 200 (application/json)
++ Request 样例
 
         {
             "param": {
@@ -32,7 +32,7 @@
             }
         }
 
-+ Response 200 (application/json)
++ Response 样例
 
         {
             "success": true,
@@ -71,7 +71,7 @@
 1 | storeId | | string | 是 | 门店ID |
 2 | storeName | | number | 是 | 门店名字 |
 
-+ Request 200 (application/json)
++ Request 样例
 
         {
             "param": {
@@ -79,7 +79,7 @@
             }
         }
        
-+ Response 200 (application/json)
++ Response 样例
 
         {
             "success": true,
