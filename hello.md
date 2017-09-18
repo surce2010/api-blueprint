@@ -8,10 +8,12 @@ FORMAT: 1A
 
 + Parameters
 
-  | 序号 | 名称 | 长度 | 类型 | 必填 | 备注 | 字典值 |
-  | -- | ------ | --- | --- | --- | --- | ----- |
-  | 1 | storeName | | string | 是 | 门店名字 | |
-  | 2 | enable | | numberl | 是 | 状态 | 0:启用,1:注销 -1默认查全部 |
+    + id (string,optional) - 员工ID
+    
+    | 序号 | 名称 | 长度 | 类型 | 必填 | 备注 | 字典值 |
+    | -- | ------ | --- | --- | --- | --- | ----- |
+    | 1 | storeName | | string | 是 | 门店名字 | |
+    | 2 | enable | | numberl | 是 | 状态 | 0:启用,1:注销 -1默认查全部 |
        
 + Response 201 (application/json)
 
