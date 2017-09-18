@@ -26,8 +26,6 @@ FORMAT: V0.0.1
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
 + Response 200 (application/json)
-    
-    + Body
 
         {
             "success": true,
@@ -77,8 +75,6 @@ FORMAT: V0.0.1
 2 | storeName | | number | 是 | 门店名字 |
        
 + Response 200 (application/json)
-
-    + Body
     
         {
             "success": true,
