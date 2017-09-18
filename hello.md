@@ -23,37 +23,37 @@
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
-+ Request 样例
++ Request 200
 
-        {
-            "param": {
-                "storeName": '', // 门店名字
-                "enable": '', // 状态
+    {
+        "param": {
+            "storeName": '', // 门店名字
+            "enable": '', // 状态
+        }
+    }
+
++ Response 200
+
+    {
+        "success": true,
+        "err_code": "",
+        "err_msg": "错误说明",
+        "data": {
+            "storeSearchDto": [{
+                "id": 2,
+                "storeName": "屠神",
+                "mobilePhone": "10000002",
+                "enable": 0,
+                "storeNo": "001",
+                "storeLogo": "标志地址"
+            }],
+            "page": {
+                "pageNO": 1,
+                "everyPageCount": 10,
+                "totalCount": 1
             }
         }
-
-+ Response MOCK数据
-
-        {
-            "success": true,
-            "err_code": "",
-            "err_msg": "错误说明",
-            "data": {
-                "storeSearchDto": [{
-                    "id": 2,
-                    "storeName": "屠神",
-                    "mobilePhone": "10000002",
-                    "enable": 0,
-                    "storeNo": "001",
-                    "storeLogo": "标志地址"
-                }],
-                "page": {
-                    "pageNO": 1,
-                    "everyPageCount": 10,
-                    "totalCount": 1
-                }
-            }
-        }
+    }
         
 # Group 员工管理
  
@@ -71,30 +71,30 @@
 1 | storeId | | string | 是 | 门店ID |
 2 | storeName | | number | 是 | 门店名字 |
 
-+ Request 样例
++ Request 200
 
-        {
-            "param": {
-                "id": '' // 员工ID
-            }
+    {
+        "param": {
+            "id": '' // 员工ID
         }
+    }
        
-+ Response MOCK数据
++ Response 200
 
-        {
-            "success": true,
-            "err_code": "888888",
-            "err_msg": "错误说明",
-            "data":{
-                "id": 39,
-                "storeId":43,
-                "realname": "屠神", 
-                "mobilePhone": "13554477744",
-                "storeName": "杭州店",
-                "type":0,
-                "sex": 1,
-                "enable": 1,
-                "username": "chenlong01",
-                "portrait":"头像"
-            }
+    {
+        "success": true,
+        "err_code": "",
+        "err_msg": "错误说明",
+        "data":{
+            "id": 39,
+            "storeId":43,
+            "realname": "屠神", 
+            "mobilePhone": "13554477744",
+            "storeName": "杭州店",
+            "type":0,
+            "sex": 1,
+            "enable": 1,
+            "username": "chenlong01",
+            "portrait":"头像"
         }
+    }
