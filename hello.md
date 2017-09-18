@@ -4,14 +4,17 @@
 
 ## 商户-门店列表查询  [GET /store/app/search{?storeName,enable,pageNO,pageCount}]
 
-
-
 + Parameters
-    + param (obj) - 封装的入参对象
-    	+ storeName (string,required) - 门店名字,字符串
-    	+ enable (numberl ,optional) - 状态,整型  0:启用,1:注销 -1默认查全部
-    	+ pageNO (numberl,required) - 页码, 整型 第一页默认 1 必填
-    	+ pageCount (numberl,required) - 每页显示条数, 整型  必填
+    + storeName (string,required) - 门店名字,字符串
+    + enable (numberl ,optional) - 状态,整型  0:启用,1:注销 -1默认查全部
+    + pageNO (numberl,required) - 页码, 整型 第一页默认 1 必填
+    + pageCount (numberl,required) - 每页显示条数, 整型  必填
+
+    + Parame
+          {
+            "name": "测试",
+            "pageNo": "1"
+          }
        
 + Response 201 (application/json)
     + Body
