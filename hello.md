@@ -25,35 +25,35 @@
 
 + Request 200 (application/json)
 
-    {
-        "param": {
-            "storeName": '', // 门店名字
-            "enable": '', // 状态
+        {
+            "param": {
+                "storeName": '', // 门店名字
+                "enable": '', // 状态
+            }
         }
-    }
 
 + Response 200 (application/json)
 
-    {
-        "success": true,
-        "err_code": "",
-        "err_msg": "错误说明",
-        "data": {
-            "storeSearchDto": [{
-                "id": 2,
-                "storeName": "屠神",
-                "mobilePhone": "10000002",
-                "enable": 0,
-                "storeNo": "001",
-                "storeLogo": "标志地址"
-            }],
-            "page": {
-                "pageNO": 1,
-                "everyPageCount": 10,
-                "totalCount": 1
+        {
+            "success": true,
+            "err_code": "",
+            "err_msg": "错误说明",
+            "data": {
+                "storeSearchDto": [{
+                    "id": 2,
+                    "storeName": "屠神",
+                    "mobilePhone": "10000002",
+                    "enable": 0,
+                    "storeNo": "001",
+                    "storeLogo": "标志地址"
+                }],
+                "page": {
+                    "pageNO": 1,
+                    "everyPageCount": 10,
+                    "totalCount": 1
+                }
             }
         }
-    }
         
 # Group 员工管理
  
@@ -73,28 +73,28 @@
 
 + Request 200 (application/json)
 
-    {
-        "param": {
-            "id": '' // 员工ID
+        {
+            "param": {
+                "id": '' // 员工ID
+            }
         }
-    }
        
 + Response 200 (application/json)
 
-    {
-        "success": true,
-        "err_code": "",
-        "err_msg": "错误说明",
-        "data":{
-            "id": 39,
-            "storeId":43,
-            "realname": "屠神", 
-            "mobilePhone": "13554477744",
-            "storeName": "杭州店",
-            "type":0,
-            "sex": 1,
-            "enable": 1,
-            "username": "chenlong01",
-            "portrait":"头像"
+        {
+            "success": true,
+            "err_code": "",
+            "err_msg": "错误说明",
+            "data":{
+                "id": 39,
+                "storeId":43,
+                "realname": "屠神", 
+                "mobilePhone": "13554477744",
+                "storeName": "杭州店",
+                "type":0,
+                "sex": 1,
+                "enable": 1,
+                "username": "chenlong01",
+                "portrait":"头像"
+            }
         }
-    }
