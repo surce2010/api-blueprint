@@ -5,6 +5,11 @@
 本接口协议中约定所有入参全部封装在param对象中
 :::
 
+序号 | 名称 | 长度 | 类型 | 必填 | 备注 | 字典值
+----|------|----|------|----|------|----
+1 | storeName | | string | 是 | 门店名字 |
+2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
+
 # Group 门店管理
 
 ## 商户-门店列表查询  [GET /store/app/search{?storeName,enable,pageNO,pageCount}]
@@ -17,11 +22,6 @@
                 "enable": '', // 状态
             }
         }
-
-| 序号 | 名称 | 长度 | 类型 | 必填 | 备注 | 字典值 |
-| -- | ------ | --- | --- | --- | --- | ----- |
-| 1 | storeName | | string | 是 | 门店名字 | |
-| 2 | enable | | numberl | 是 | 状态 | 0:启用,1:注销 -1默认查全部 |
 
 + Parameters
     + storeName (string,required) - 门店名字,字符串
