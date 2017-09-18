@@ -8,12 +8,16 @@ FORMAT: 1A
 
 + Parameters
 
-    + id (string,optional) - 员工ID
-    
-    | 序号 | 名称 | 长度 | 类型 | 必填 | 备注 | 字典值 |
-    | -- | ------ | --- | --- | --- | --- | ----- |
-    | 1 | storeName | | string | 是 | 门店名字 | |
-    | 2 | enable | | numberl | 是 | 状态 | 0:启用,1:注销 -1默认查全部 |
+    + storeName (string,required) - 门店名字,字符串
+    + enable (numberl ,optional) - 状态,整型  0:启用,1:注销 -1默认查全部
+    + pageNO (numberl,required) - 页码, 整型 第一页默认 1 必填
+    + pageCount (numberl,required) - 每页显示条数, 整型  必填
+
+
+    + | 序号 | 名称 | 长度 | 类型 | 必填 | 备注 | 字典值 |
+    + | -- | ------ | --- | --- | --- | --- | ----- |
+    + | 1 | storeName | | string | 是 | 门店名字 | |
+    + | 2 | enable | | numberl | 是 | 状态 | 0:启用,1:注销 -1默认查全部 |
        
 + Response 201 (application/json)
 
