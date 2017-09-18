@@ -25,6 +25,15 @@ FORMAT: V0.0.1
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
++ Request (application/json)
+
+        {
+            "param": {
+                "storeName": '', // 门店名字
+                "enable": '', // 状态
+            }
+        }
+
 + Response 200 (application/json)
 
         {
@@ -48,15 +57,6 @@ FORMAT: V0.0.1
             }
         }
 
-+ Request (application/json)
-
-        {
-            "param": {
-                "storeName": '', // 门店名字
-                "enable": '', // 状态
-            }
-        }
-
 
 # Group 员工管理
  
@@ -73,6 +73,14 @@ FORMAT: V0.0.1
 ----|------|----|------|----|------|----
 1 | storeId | | string | 是 | 门店ID |
 2 | storeName | | number | 是 | 门店名字 |
+
++ Request (application/json)
+
+        {
+            "param": {
+                "id": '' // 员工ID
+            }
+        }
        
 + Response 200 (application/json)
     
@@ -91,13 +99,5 @@ FORMAT: V0.0.1
                 "enable": 1,
                 "username": "chenlong01",
                 "portrait":"头像"
-            }
-        }
-
-+ Request (application/json)
-
-        {
-            "param": {
-                "id": '' // 员工ID
             }
         }
