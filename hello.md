@@ -1,3 +1,5 @@
+FORMAT: V0.0.1
+
 # APP接口文档
 
 ::: warning
@@ -23,16 +25,9 @@
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
-+ Request 200
-
-        {
-            "param": {
-                "storeName": '', // 门店名字
-                "enable": '', // 状态
-            }
-        }
-
-+ Response 200
++ Response 200 (application/json)
+    
+    + Body
 
         {
             "success": true,
@@ -54,7 +49,17 @@
                 }
             }
         }
-        
+
++ Request (application/json)
+
+        {
+            "param": {
+                "storeName": '', // 门店名字
+                "enable": '', // 状态
+            }
+        }
+
+
 # Group 员工管理
  
 ## 员工-员工查询  [POST /user/app/info]
@@ -70,17 +75,11 @@
 ----|------|----|------|----|------|----
 1 | storeId | | string | 是 | 门店ID |
 2 | storeName | | number | 是 | 门店名字 |
-
-+ Request 200
-
-        {
-            "param": {
-                "id": '' // 员工ID
-            }
-        }
        
-+ Response 200
++ Response 200 (application/json)
 
+    + Body
+    
         {
             "success": true,
             "err_code": "",
@@ -96,5 +95,13 @@
                 "enable": 1,
                 "username": "chenlong01",
                 "portrait":"头像"
+            }
+        }
+
++ Request (application/json)
+
+        {
+            "param": {
+                "id": '' // 员工ID
             }
         }
