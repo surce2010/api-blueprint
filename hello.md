@@ -26,10 +26,6 @@ FORMAT: V0.0.1
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
 
-+ Parameters
-
-    + name: `alice` (string, optional) - Search for a user by name
-
 + Response 200 (application/json;charset=UTF-8)
     
     + Body
