@@ -29,7 +29,6 @@ FORMAT: V0.0.1
 + Parameters
 
     + name: `alice` (string, optional) - Search for a user by name
-    + joinedBefore: `2011-01-01` (string, optional) - Search by join date
 
 + Response 200 (application/json;charset=UTF-8)
     
