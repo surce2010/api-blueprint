@@ -25,37 +25,34 @@ FORMAT: V0.0.1
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
-+ Request (application/json)
++ Parameters
+    + storeName: `鼓楼店` (required, string) - 门店名字
+    + enable: `正常` (optional, string) - 状态
 
-        {
-            "param": {
-                "storeName": '', // 门店名字
-                "enable": '', // 状态
-            }
-        }
++ Response 200 (application/json;charset=UTF-8)
+    
+    + Body
 
-+ Response 200 (application/json)
-
-        {
-            "success": true,
-            "err_code": "",
-            "err_msg": "错误说明",
-            "data": {
-                "storeSearchDto": [{
-                    "id": 2,
-                    "storeName": "屠神",
-                    "mobilePhone": "10000002",
-                    "enable": 0,
-                    "storeNo": "001",
-                    "storeLogo": "标志地址"
-                }],
-                "page": {
-                    "pageNO": 1,
-                    "everyPageCount": 10,
-                    "totalCount": 1
+            {
+                "success": true,
+                "err_code": "",
+                "err_msg": "错误说明",
+                "data": {
+                    "storeSearchDto": [{
+                        "id": 2,
+                        "storeName": "屠神",
+                        "mobilePhone": "10000002",
+                        "enable": 0,
+                        "storeNo": "001",
+                        "storeLogo": "标志地址"
+                    }],
+                    "page": {
+                        "pageNO": 1,
+                        "everyPageCount": 10,
+                        "totalCount": 1
+                    }
                 }
             }
-        }
 
 
 # Group 员工管理
@@ -74,7 +71,10 @@ FORMAT: V0.0.1
 1 | storeId | | string | 是 | 门店ID |
 2 | storeName | | number | 是 | 门店名字 |
 
-+ Request (application/json)
++ Request (application/x-www-form-urlencoded)
+First POST example with body
+
+    + Schema
 
         {
             "param": {
@@ -82,22 +82,24 @@ FORMAT: V0.0.1
             }
         }
        
-+ Response 200 (application/json)
++ Response 200 (application/json;charset=UTF-8)
     
-        {
-            "success": true,
-            "err_code": "",
-            "err_msg": "错误说明",
-            "data":{
-                "id": 39,
-                "storeId":43,
-                "realname": "屠神", 
-                "mobilePhone": "13554477744",
-                "storeName": "杭州店",
-                "type":0,
-                "sex": 1,
-                "enable": 1,
-                "username": "chenlong01",
-                "portrait":"头像"
+    + Body
+    
+            {
+                "success": true,
+                "err_code": "",
+                "err_msg": "错误说明",
+                "data":{
+                    "id": 39,
+                    "storeId":43,
+                    "realname": "屠神", 
+                    "mobilePhone": "13554477744",
+                    "storeName": "杭州店",
+                    "type":0,
+                    "sex": 1,
+                    "enable": 1,
+                    "username": "chenlong01",
+                    "portrait":"头像"
+                }
             }
-        }
