@@ -25,9 +25,11 @@ FORMAT: V0.0.1
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
 
+
 + Parameters
-    + storeName: `鼓楼店` (required, string) - 门店名字
-    + enable: 0 (optional, number) - 状态码
+
+    + name: `alice` (string, optional) - Search for a user by name
+    + joinedBefore: `2011-01-01` (string, optional) - Search by join date
 
 + Response 200 (application/json;charset=UTF-8)
     
