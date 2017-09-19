@@ -1,11 +1,12 @@
-FORMAT: V0.0.1
-
 # APP接口文档
 
 ::: warning
-#### <i class="fa fa-warning"></i> 注意
-1. 本协议中约定所有入参全部封装在param对象中;
-2. 本协议中约定所有出参返回类型为application/json类型;
+#### <i class="fa fa-warning"></i> 接口规范解释及要求
+* `# Group 门店管理`=>页面级别
+* `## 商户-门店列表查询 [GET /store/app/search]`=>单个接口级别; `商户-门店列查询`=>接口名称; `GET/POST`=>接口方法; `/store/app/search`=>接口地址
+* `> 根据页面查询条件获取门店列表`=>接口说明;
+* 出、入参数说明表格要包含所有参数、属性说明、枚举字典值及其含义;
+* Schema、Body内结构要严格按照模板格式书写，以3个TAB开头、用英文输入法下的双引号包裹、不能包含注释语句;
 :::
 
 # Group 门店管理
@@ -24,6 +25,15 @@ FORMAT: V0.0.1
 ----|------|----|------|----|------|----
 1 | storeName | | string | 是 | 门店名字 |
 2 | enable | | number | 是 | 状态 | 0:启用 1:注销 -1默认查全部
+
++ Request (application/x-www-form-urlencoded)
+
+    + Schema
+
+            {
+                "storeName": "",
+                "enable": ""
+            }
 
 
 + Response 200 (application/json;charset=UTF-8)
@@ -69,14 +79,11 @@ FORMAT: V0.0.1
 2 | storeName | | number | 是 | 门店名字 |
 
 + Request (application/x-www-form-urlencoded)
-First POST example with body
 
     + Schema
 
             {
-                "param": {
-                    "id": '' // 员工ID
-                }
+                "storeId": ""
             }
        
 + Response 200 (application/json;charset=UTF-8)
@@ -100,3 +107,5 @@ First POST example with body
                     "portrait":"头像"
                 }
             }
+
+
