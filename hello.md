@@ -14,7 +14,7 @@
 
 # Group 门店管理
 
-## 商户-门店列表查询 [GET /store/app/search{?storeName, enable}]
+## 商户-门店列表查询 [GET /store/app/search]
 > 根据页面查询条件获取门店列表
 
 ### 入参参数说明
