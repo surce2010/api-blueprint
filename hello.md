@@ -27,7 +27,7 @@ FORMAT: V0.0.1
 
 + Parameters
     + storeName: `鼓楼店` (required, string) - 门店名字
-    + enable: `正常` (optional, string) - 状态
+    + enable: 0 (optional, number) - 状态码
 
 + Response 200 (application/json;charset=UTF-8)
     
